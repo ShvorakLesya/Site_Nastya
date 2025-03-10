@@ -1,0 +1,46 @@
+body {
+	background-image: url("1.jpg");
+	background-color: white;
+	background-attachment: scroll;
+	background-repeat:no-repeat;
+
+}
+font{
+	font-style: italic;
+	color: #89ff89;
+	background-color: #ffa500;
+}
+
+div{
+	text-decoration: underline;
+}
+nastia{
+	color:yellow;
+}
+.first{
+	front-weight:100;
+}
+.second{
+	front-size:2em;
+
+}
+.third{
+	text-decoration:line-through ;
+
+}
+.done{
+	color:red ;
+
+}
+
+::marker {
+  color: green;
+  font-size: 29px;
+}
+
+@media (min-width: 801px){
+	body{
+	margin:auto;
+	width: 800px;
+	}
+}

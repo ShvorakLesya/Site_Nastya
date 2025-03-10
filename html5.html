@@ -1,0 +1,37 @@
+<head>
+     <title>Canvas</title>
+</head>
+<body>
+     <canvas id = "canvas" width="600" height ="800"></canvas>
+     <script>
+         let canvas = document.getElementById("canvas");
+         let ctx = canvas.getContext("2d");
+         ctx.lineWidth= 4;
+         ctx.strokeStyle='blue';
+         ctx.arc(70, 100, 30, Math.PI/2, Math.PI*3/2, false);
+         ctx.stroke();
+         ctx.beginPath();
+         ctx.arc(70, 100, 50, Math.PI/2, Math.PI*3/2, false);
+         ctx.stroke();
+
+         ctx.beginPath();
+         ctx.arc(241, 100, 30, Math.PI*3/2, Math.PI/2,  false);
+         ctx.stroke();
+         ctx.beginPath();
+         ctx.arc(241, 100, 50, Math.PI*3/2, Math.PI/2,  false);
+         ctx.stroke()
+         
+         
+         ctx.beginPath();
+         ctx.arc(155, 100, 90, 0 , Math.PI*2,false);
+         ctx.stroke();
+         
+       
+        
+
+        
+
+
+         ctx.stroke();
+     </script>
+</body>     

@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EASY.ZNO</title>
+    <style>
+ body {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    background-color: white;
+    color: #3A3A3A;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    flex-direction: column;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+header {
+    font-family: 'Montserrat', sans-serif;
+    background: white;
+    color: black;
+    font-size: 32px;
+    font-weight: bold;
+    -webkit-box-shadow: 0px 0px 6px -3px rgba(0,0,0,1);
+    -moz-box-shadow: 0px 0px 6px -3px rgba(0,0,0,1);
+    box-shadow: 0px 0px 6px -3px rgba(0,0,0,1);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    min-height: 80px; /* Мінімальна висота */
+    display: flex;
+    align-items: center; /* Центрує елементи по вертикалі */
+    justify-content: space-between; /* Логотип залишається зліва */
+    padding: 10px 20px;
+}
+
+nav {
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); /* Центрує кнопки */
+}
+
+
+nav button {
+    padding: 15px 20px;
+    margin: 5px;
+    border: none;
+    background: white;
+    color: #3A3A3A;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background 0.3s, transform 0.3s;
+    -webkit-box-shadow: 0px 0px 7px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 7px -1px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 7px -1px rgba(0,0,0,0.75);
+}
+
+nav button:hover {
+    background: #F47C7C;
+    transform: scale(1.1);
+}
+
+section {
+    display: none;
+    padding: 40px;
+    max-width: 1000px;
+    margin: auto;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+section.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.course {
+    background: #F6CCD4;
+    padding: 25px;
+    margin: 20px 0;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+footer {
+    min-height: 50px;
+    background: black;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    position: sticky;
+
+}
+
+.choose-course-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 25px;
+    background: #F6CCD4;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    text-decoration: none;
+}
+
+.choose-course-btn:hover {
+    background: #F47C7C;
+    transform: scale(1.1);
+}
+div {
+    max-width: 1200px; /* Обмеження максимальної ширини */
+    width: 90%; /* Зменшує ширину на маленьких екранах */
+    margin: 0 auto; /* Центрування */
+    padding: 0 15px; /* Відступи з боків для маленьких екранів */
+}
+
+.review {
+    background: #F6CCD4;
+    padding: 25px;
+    margin: 20px 0;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.info_block {
+    background: #F6CCD4;
+    padding: 25px;
+    margin: 20px 0;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+hr {
+    height: 3px;
+    border: none;
+    background: linear-gradient(to right, transparent, black, transparent);
+    width: 80%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+.footer_hr {
+    height: 3px;
+    border: none;
+    background: linear-gradient(to right, transparent, white, transparent);
+    width: 80%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+.wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+.easy_zno {
+    font-weight: 700;
+    color: #b5838d;
+    white-space: nowrap;
+}
+.teachers {
+    margin-top: 30px;
+}
+
+.teacher {
+    display: flex;
+    margin-bottom: 20px;
+    background-color: #F6CCD4;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.teacher-photo {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    margin-right: 20px;
+    object-fit: cover;
+}
+
+.teacher-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.teacher-info h2 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #3A3A3A;
+}
+
+.teacher-info p {
+    font-size: 16px;
+    color: #3A3A3A;
+    margin: 5px 0;
+}
+
+.teacher-info b {
+    color: #F47C7C;
+}
+
+.teacher-info p:last-child {
+    font-style: italic;
+}
+
+
+
+.rating-stars {
+    align-items: left;
+    color: black; /* Золотистий колір для зірок */
+    font-size: 18px;
+}
+
+.reviews-count {
+    color: #3A3A3A;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: underline;
+    
+}
+
+.course-price {
+    font-size: 22px;
+    font-weight: bold;
+    color: #F47C7C; 
+    background-color: #fff0f0; 
+    padding: 5px 15px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    display: inline-block; 
+    margin-top: 10px;
+}
+
+    </style>
+</head>
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EASY.ZNO</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="wrapper">
+            <img src="logo.png" alt="Logo" class="logo">
+            <nav>
+                <button onclick="showSection('home')">Головна</button>
+                <button onclick="showSection('reviews')">Відгуки</button>
+                <button onclick="showSection('courses')">Курси</button>
+            </nav>
+        </div>
+    </header>
+    <main>
+    <section id="home" class="active">
+        <h1><span class="easy_zno">EASY.ZNO</span> – Ваш ключ до успіху на ЗНО/НМТ!</h1>
+        <h1>Про нас</h1>
+        <div class="info_block">
+        <p>Ми допомагаємо учням готуватися до ЗНО/НМТ уже понад 5 років. Наші курси гарантують результат!</p>
+        <p>Наші курси створені провідними викладачами, які мають багаторічний досвід підготовки учнів до іспитів. Ми використовуємо сучасні методики навчання, які допомагають швидко засвоювати матеріал та впевнено складати ЗНО. Завдяки інтерактивним урокам, тестам та персоналізованій підтримці кожен учень отримує максимум знань.</p>
+        <p>Ми пишаємося тим, що понад 90% наших студентів досягають високих балів. Наша програма передбачає детальний розбір всіх тем, постійний контроль знань та індивідуальний підхід до кожного учня. Приєднуйтеся до нас та отримуйте якісну підготовку до вашого майбутнього!</p>
+        </div>
+        <button class="choose-course-btn" onclick="showSection('courses')">Обрати курс</button>
+
+        <div class="teachers">
+            <hr>
+            <h1>Вчителі курсу підготовки до іспитів EASY.ZNO</h1>
+            
+            <!-- Блок 1: Олександр Мельник -->
+            <div class="teacher">
+                <img src="teacher1.png" alt="Олександр Мельник" class="teacher-photo">
+                <div class="teacher-info">
+                    <h2>Олександр Мельник</h2>
+                    <p><b>Предмет:</b> Математика</p>
+                    <p>Олександр має більше 10 років досвіду викладання математики. Його методи включають вирішення складних задач та розв'язування тестів ЗНО. Студенти завжди відзначають його здатність пояснювати складні теми доступною мовою.</p>
+                </div>
+            </div>
+            
+            <!-- Блок 2-->
+            <div class="teacher">
+                <img src="teacher2.png" alt="Марія Іванова" class="teacher-photo">
+                <div class="teacher-info">
+                    <h2>Аніта Мальовійнова</h2>
+                    <p><b>Предмет:</b> Українська мова</p>
+                    <p>Марія має великий досвід викладання української мови та літератури. Вона працює з учнями різного рівня підготовки та допомагає кожному знайти індивідуальний підхід для вивчення мови та грамотності.</p>
+                </div>
+            </div>
+             
+            <div class="teacher">
+                <img src="teacher3.png" alt="Олена Петренко" class="teacher-photo">
+                <div class="teacher-info">
+                    <h2>Олена Петренко</h2>
+                    <p><b>Предмет:</b> Англійська мова</p>
+                    <p>Олена має багаторічний досвід викладання англійської мови. Вона активно використовує сучасні методики для покращення лексики, граматики та комунікативних навичок студентів, готуючи їх до ЗНО та інших іспитів.</p>
+                </div>
+            </div>
+
+            <div class="teacher">
+                <img src="teacher4.png" alt="Дмитро Коваленко" class="teacher-photo">
+                <div class="teacher-info">
+                    <h2>Дмитро Коваленко</h2>
+                    <p><b>Предмет:</b> Біологія</p>
+                    <p>Дмитро спеціалізується на біології і має великий досвід підготовки учнів до ЗНО. Він викладає біологію за допомогою інтерактивних методів, використовуючи сучасні онлайн-платформи для досягнення високих результатів.</p>
+                </div>
+            </div>
+
+       
+            <div class="teacher">
+                <img src="teacher5.png" alt="Ірина Сидоренко" class="teacher-photo">
+                <div class="teacher-info">
+                    <h2>Ірина Сидоренко</h2>
+                    <p><b>Предмет:</b> Географія</p>
+                    <p>Ірина викладає географію вже понад 8 років. Вона допомагає учням засвоїти картографічні навички та аналізувати географічні дані, готуючи їх до ЗНО та важливих тестувань.</p>
+                </div>
+            </div>
+
+         
+            <div class="teacher">
+                <img src="teacher6.png" alt="Вікторія Козак" class="teacher-photo">
+                <div class="teacher-info">
+                    <h2>Вікторія Козак</h2>
+                    <p><b>Предмет:</b> Історія України</p>
+                    <p>Вікторія викладає історію України більше 7 років. Вона фокусується на глибокому аналізі історичних подій та розвитку країни, забезпечуючи учням успіх на ЗНО завдяки індивідуальному підходу до кожного.</p>
+                </div>
+        </div>
+    </section>
+    <section id="reviews">
+        <h1>Відгуки</h1>
+        
+    <div class="review">
+        <h2>Анна Коваль</h2>
+        <p><b>Придбала курс української мови</b></p>
+        <p>"Завдяки курсу EASY.ZNO я нарешті розібрався з правописом та пунктуацією! Дуже сподобалося, що кожна тема розглядається детально, але без води. Плюс – безліч практичних завдань та тестів у форматі ЗНО. Результати пробного тестування після курсу значно покращилися!".</p>
+    </div>
+
+    
+    <div class="review">
+        <h2>Олег Тарасенко</h2>
+        <p><b>Придбав курс з математики</b></p>
+        <p>"Курс з математики від EASY.ZNO став для мене справжнім проривом! Пояснення теорії були зрозумілі, а задачі допомогли добре підготуватися до ЗНО. Після курсу я почувався набагато впевненіше і результати тестів це підтвердили. Рекомендую всім!"</p>
+    </div>
+
+  
+    <div class="review">
+        <h2>Ірина Сидорчук</h2>
+        <p><b>Придбала курс англійської мови</b></p>
+        <p>"Я була дуже задоволена курсом з англійської мови. Викладач чудово пояснював граматику і робив акцент на практиці. Завдяки цьому я почала впевненіше розмовляти англійською, а результат ЗНО був набагато кращим, ніж я очікувала!"</p>
+    </div>
+
+
+    <div class="review">
+        <h2>Максим Гнатюк</h2>
+        <p><b>Придбав курс з біології</b></p>
+        <p>"Курс з біології перевершив всі мої очікування. Матеріал подається дуже структуровано, є багато практичних завдань і тестів, що дуже допомогло мені в підготовці до ЗНО. Тепер я впевнений у своїх знаннях і результат ЗНО це підтвердив!"</p>
+    </div>
+
+
+    <div class="review">
+        <h2>Дарина Бойко</h2>
+        <p><b>Придбала курс з історії України</b></p>
+        <p>"Курс з історії України був дуже цікавим і доступним для розуміння. Завдяки чітким поясненням та інтерактивним заняттям, я змогла краще засвоїти матеріал і отримати високий бал на ЗНО. Дякую за такий чудовий курс!"</p>
+    </div>
+
+   
+    <div class="review">
+        <h2>Сергій Петров</h2>
+        <p><b>Придбав курс з географії</b></p>
+        <p>"Я дуже задоволений курсом з географії. Викладачі роз'яснюють складні моменти доступно, і я зміг значно покращити свої знання. Тести на платформі допомогли мені правильно підготуватися до ЗНО і здобути високий бал!"</p>
+    </div>
+    </section>
+    
+    <section id="courses">
+    <h1>Курси</h1>
+
+
+    <div class="course">
+        <h2>Українська мова</h2>
+        <p><span class="course-price">Ціна: 1500 грн</span></p>
+        <p>Тривалість: 2 місяці</p>
+        <p>Опис: Глибоке вивчення граматики, правопису та тестових завдань.</p>
+    
+        <p><span class="rating-stars"></span></p>
+        <p><span class="reviews-count">6 відгуків</span></p>
+        
+    </div>
+
+    <div class="course">
+        <h2>Математика</h2>
+        <p><span class="course-price">Ціна: 1800 грн</span></p>
+        <p>Тривалість: 3 місяці</p>
+        <p>Опис: Розбір основних тем, формули, приклади та практичні завдання.</p>
+       
+        <p><span class="rating-stars"></span></p>
+        <p><span class="reviews-count">12 відгуків</span></p>
+        
+    </div>
+
+    
+    <div class="course">
+        <h2>Англійська мова</h2>
+        <p><span class="course-price">Ціна: 1600 грн</span></p>
+        <p>Тривалість: 2,5 місяці</p>
+        <p>Опис: Лексика, граматика, тестові питання.</p>
+       
+        <p><span class="rating-stars"></span></p>
+        <p><span class="reviews-count">8 відгуків</span></p>
+        
+    </div>
+
+    <!-- Курс 4 - Історія України -->
+    <div class="course">
+        <h2>Історія України</h2>
+        <p><span class="course-price">Ціна: 1700 грн</span></p>
+        <p>Тривалість: 2 місяці</p>
+        <p>Опис: Вивчення ключових подій та особистостей, підготовка до ЗНО.</p>
+        
+        <p><span class="rating-stars"></span></p>
+        <p><span class="reviews-count">4 відгуки</span></p>
+        
+    </div>
+
+    <!-- Курс 5 - Біологія -->
+    <div class="course">
+        <h2>Біологія</h2>
+        <p><span class="course-price">Ціна: 1600 грн</span></p>
+        <p>Тривалість: 3 місяці</p>
+        <p>Опис: Розбір біологічних процесів, організмів та еволюції.</p>
+   
+       
+        <p><span class="reviews-count">10 відгуків</span></p>
+        
+    </div>
+
+    <!-- Курс 6 - Географія -->
+    <div class="course">
+        <h2>Географія</h2>
+        <p><span class="course-price">Ціна: 1500 грн</span></p>
+        <p>Тривалість: 3 місяці</p>
+        <p>Опис: Вивчення природних процесів, картографії, клімату та демографії.</p>
+   
+       
+        <p><span class="reviews-count">(5 відгуків)</span></p>
+        
+    </div>
+
+    </main>
+<footer>
+        <div class="footer-container">
+            <div class="footer-contact">
+                <p><b>Телефон:(+38)063-074-1518</b></p>
+                <p><b>Email: easy.zno@gmail.com</b></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <hr class="footer_hr">
+            <p>&copy; 2025 EASY.ZNO, Всі Права Захищені</p>
+        </div>
+    </footer>
+    
+    <script>
+        function showSection(id) {
+            console.log("Switching to section:", id);
+            document.querySelectorAll('section').forEach(sec => {
+                sec.classList.remove('active');
+                console.log("Hiding section:", sec.id);
+            });
+            document.getElementById(id).classList.add('active');
+            console.log("Displayed section:", id);
+        }
+    </script>
+</body>
+</html>
